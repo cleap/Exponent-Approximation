@@ -10,6 +10,8 @@
  *      i=0
  */
 
+use std::io;
+
 //TODO: redefine as recursive macro
 fn fact(x: u32) -> u32 {
     let mut result: u32 = 1;
@@ -19,7 +21,40 @@ fn fact(x: u32) -> u32 {
     result
 }
 
+fn pow_basic(base: f64, power: u32) -> f64 {
+    let mut result: f64 = 1.0;
+    for number in 0..power {
+        result = result * base;
+    }
+    result
+}
+
+fn compute(x: f64, n: u32) -> f64 {
+    let mut result: f64 = 0.0;
+    x // TODO
+}
+
 fn main() {
-    let x: u32 = 4;
-    println!("{}! = {}", x, fact(x));
+
+    println!("Hello! Thrilled to receive an approximate value for e^x, I see!");
+    println!("What value would you like for x?");
+
+    let mut x = String::new();
+    io::stdin().read_line(&mut x)
+        .expect("Failed to read line");
+    let x: f64 = x.trim().parse()
+        .expect("Please type a number!");
+
+    println!("x is {} - excellent!", x);
+    println!("How many degrees would you like for the Maclauren Series?");
+
+    let mut n = String::new();
+    io::stdin().read_line(&mut n)
+        .expect("Failed to read line");
+    let n: u32 = n.trim().parse()
+        .expect("Please type a number!");
+
+    println!("Computing the {} degree Maclauren Series expansion for {}", n, x);
+
+    println!("On an unrelated note, 9^2 is {}", pow_basic(9.0, 2));
 }
