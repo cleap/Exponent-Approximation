@@ -31,7 +31,10 @@ fn pow_basic(base: f64, power: u32) -> f64 {
 
 fn compute(x: f64, n: u32) -> f64 {
     let mut result: f64 = 0.0;
-    x // TODO
+    for term in 0..(n+1) {
+        result = result + (pow_basic(x, term)) / (fact(term) as f64);
+    }
+    result
 }
 
 fn main() {
@@ -55,6 +58,5 @@ fn main() {
         .expect("Please type a number!");
 
     println!("Computing the {} degree Maclauren Series expansion for {}", n, x);
-
-    println!("On an unrelated note, 9^2 is {}", pow_basic(9.0, 2));
+    println!("e^{} is approximately equal to {}", x, compute(x, n));
 }
