@@ -12,7 +12,7 @@
 
 use std::io;
 
-//TODO: redefine as recursive macro
+// fact : takes in an unsigned int x and returns x!
 fn fact(x: u32) -> u32 {
     let mut result: u32 = 1;
     for number in 2..(x+1) {
@@ -21,6 +21,7 @@ fn fact(x: u32) -> u32 {
     result
 }
 
+// pow_basic : returns base^power
 fn pow_basic(base: f64, power: u32) -> f64 {
     let mut result: f64 = 1.0;
     for number in 0..power {
@@ -29,6 +30,8 @@ fn pow_basic(base: f64, power: u32) -> f64 {
     result
 }
 
+// compute : computes the Maclaurin series for e^x for the given x, running
+//          n terms of the Maclaurin series expansion
 fn compute(x: f64, n: u32) -> f64 {
     let mut result: f64 = 0.0;
     for term in 0..(n+1) {
@@ -37,8 +40,8 @@ fn compute(x: f64, n: u32) -> f64 {
     result
 }
 
+// main : this is where all the magic happens
 fn main() {
-
     println!("Hello! Thrilled to receive an approximate value for e^x, I see!");
     println!("What value would you like for x?");
 
