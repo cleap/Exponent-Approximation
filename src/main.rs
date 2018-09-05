@@ -24,7 +24,7 @@ fn fact(x: u32) -> u32 {
 // pow_basic : returns base^power
 fn pow_basic(base: f64, power: u32) -> f64 {
     let mut result: f64 = 1.0;
-    for number in 0..power {
+    for _number in 0..power {
         result = result * base;
     }
     result
@@ -52,13 +52,17 @@ fn main() {
         .expect("Please type a number!");
 
     println!("x is {} - excellent!", x);
-    println!("How many degrees would you like for the Maclauren Series?");
+    println!("How many degrees would you like for the Maclauren Series? (max 12)");
 
     let mut n = String::new();
     io::stdin().read_line(&mut n)
         .expect("Failed to read line");
     let n: u32 = n.trim().parse()
         .expect("Please type a number!");
+    if n > 12 {
+        println!("Don't like to follow the rules, I see..");
+        return;
+    }
 
     println!("Computing the {} degree Maclauren Series expansion for {}", n, x);
     println!("e^{} is approximately equal to {}", x, compute(x, n));
